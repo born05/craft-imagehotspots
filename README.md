@@ -1,6 +1,6 @@
 # Image Hotspots (beta)
 
-Image Hotspots fieldtype for adding hotspots to images in Craft CMS.
+Image Hotspots fieldtype for adding multiple hotspots to images from a matrix or super-table in Craft CMS.
 
 ## Setup
 

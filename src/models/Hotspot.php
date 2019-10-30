@@ -36,17 +36,4 @@ class Hotspot extends Model
     {
         return "{$this->x};{$this->y})";
     }
-
-    /**
-     * Returns the coords as an array.
-     *
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return [
-            'x' => $this->x,
-            'y' => $this->y,
-        ];
-    }
 }

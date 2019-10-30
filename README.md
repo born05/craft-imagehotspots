@@ -23,4 +23,4 @@ composer require born05/craft-imagehotspots
 
 Copyright © [Born05](https://www.born05.com/)
 
-See [license](https://github.com/born05/craft-commerce-buckaroo/blob/master/LICENSE.md)
+See [license](https://github.com/born05/craft-imagehotspots/blob/master/LICENSE.md)

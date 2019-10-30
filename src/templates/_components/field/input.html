@@ -1,0 +1,27 @@
+  
+{% import "_includes/forms" as forms %}
+
+{% set id = id ?? 'hotspot'~random() -%}
+{% set containerId = containerId ?? id~'-container' -%}
+
+{% set x = value.x %}
+{% set y = value.y %}
+
+<div id="{{ id }}" class="hotspot--field flex" data-imagehotspot="{{ relatedAssetHandle }}-{{ asset is not null ? asset.id }}">
+    {% if asset is null %}
+        {{ 'Please save the "{fieldHandle}" field before placing hotspots.'|t('imagehotspots', { fieldHandle: relatedAssetHandle }) }}
+    {% else %}
+        <input id="{{ id }}-x" type="hidden" name="{{ name }}[x]" value="{{ x }}" data-imagehotspot-x="true" />
+        <input id="{{ id }}-y" type="hidden" name="{{ name }}[y]" value="{{ y }}" data-imagehotspot-y="true" />
+        <div class="btn edit icon">{{ 'Hotspot'|t('imagehotspots') }}</div>
+    {% endif %}
+</div>
+
+{% set jsSettings = {
+    id: id|namespaceInputId,
+    assetUrl: (asset is not null) ? asset.url : null,
+} %}
+
+{% js %}
+    new Born05.ImageHotspotInput({{ jsSettings|json_encode|raw }});
+{% endjs -%}

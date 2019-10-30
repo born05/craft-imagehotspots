@@ -1,0 +1,15 @@
+{% import "_includes/forms" as forms -%}
+
+{% set config = {
+    label: label,
+    id: id,
+    name: name,
+    value: value,
+    errors: errors,
+} %}
+
+{% macro imagehotspot(config) %}
+    {{ forms.text(config) }}
+{% endmacro %}
+
+{{ forms.field(config, _self.imagehotspot(config)) }}

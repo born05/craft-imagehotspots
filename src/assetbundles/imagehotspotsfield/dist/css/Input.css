@@ -1,0 +1,54 @@
+.hotspot--field {
+    display: block;
+    position: relative;
+}
+
+.hotspot--field .btn {
+    margin-bottom: 0;
+}
+
+.image-hotspot-editor {
+    padding-bottom: 58px;
+}
+
+.image-hotspot-editor .body {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-hotspot-editor .image-container {
+    position: relative;
+    display: inline-block;
+    user-select: none;
+    z-index: 0;
+}
+
+.image-hotspot-editor img {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+}
+
+.image-hotspot-editor .point,
+.image-hotspot-editor .current {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    margin: -7px 0 0 -7px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .75);
+    border: 2px solid rgba(255, 255, 255, .75);
+}
+.image-hotspot-editor .current {
+    background: #000;
+    border-color: #fff;
+    z-index: 1;
+}
+
+.image-hotspot-editor .footer {
+    width: 100%;
+    margin: 0;
+}

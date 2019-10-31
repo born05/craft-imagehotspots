@@ -9,10 +9,15 @@ Born05.ImageHotspotEditor = Garnish.Modal.extend({
     $cancelBtn: null,
     $imgContainer: null,
 
+    asset: null,
+    pos: null,
     listData: null,
 
-    init: function(assetUrl, pos, listData, settings) {
+    init: function(asset, pos, listData, settings) {
         this.setSettings(settings, Born05.ImageHotspotEditor.defaults);
+
+        this.asset = asset;
+        this.pos = pos;
         this.updateData(listData);
 
         // Build the modal
@@ -21,17 +26,31 @@ Born05.ImageHotspotEditor = Garnish.Modal.extend({
         var $footer = $('<div class="footer"/>').appendTo($container);
 
         this.$primaryButtons = $('<div class="buttons right"/>').appendTo($footer);
-        this.$cancelBtn = $('<div class="btn">' + Craft.t('app', 'Cancel') + '</div>').appendTo(this.$primaryButtons);
+        this.$cancelBtn = $('<div class="btn submit">' + Craft.t('app', 'Done') + '</div>').appendTo(this.$primaryButtons);
 
         this.$imgContainer = $('<div class="image-container"></div>').appendTo($body);
-        this.$img = $('<img src="'+assetUrl+'" alt="" />').appendTo(this.$imgContainer);
+        this.$img = $('<img src="'+this.asset.url+'" alt="" />').appendTo(this.$imgContainer);
         this.$point = $('<div class="current"></div>').appendTo(this.$imgContainer);
-        this.setPoint(pos.x, pos.y);
+        this.setPoint(this.pos.x, this.pos.y);
 
         this.base($container, this.settings);
 
         this.addListener(this.$imgContainer, 'click', 'select');
         this.addListener(this.$cancelBtn, 'activate', 'hide');
+    },
+
+    createImage: function(asset) {
+        this.$imgContainer.removeClass('align-height align-width');
+
+        var containerBounds = this.$imgContainer[0].getBoundingClientRect();
+        var containerRatio = containerBounds.width / containerBounds.height;
+        var imageRatio = asset.width / asset.height;
+
+        if (containerRatio > imageRatio) {
+            this.$imgContainer.addClass('align-height');
+        } else  {
+            this.$imgContainer.addClass('align-width');
+        }
     },
 
     updateData: function(listData) {
@@ -55,6 +74,10 @@ Born05.ImageHotspotEditor = Garnish.Modal.extend({
         }, this);
     },
 
+    onFadeIn: function() {
+        this.createImage(this.asset);
+    },
+
     setPoint: function(x, y) {
         this.$point.css({
             top: (y * 100) + '%',
@@ -65,7 +88,7 @@ Born05.ImageHotspotEditor = Garnish.Modal.extend({
     select: function(e) {
         e.preventDefault();
 
-        const imageBounds = this.$img[0].getBoundingClientRect();
+        var imageBounds = this.$img[0].getBoundingClientRect();
 
         var x = (e.clientX - imageBounds.left) / imageBounds.width;
         var y = (e.clientY - imageBounds.top) / imageBounds.height;

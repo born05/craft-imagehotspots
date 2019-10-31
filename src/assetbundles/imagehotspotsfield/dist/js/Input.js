@@ -52,7 +52,7 @@ Born05.ImageHotspotInput = Garnish.Base.extend({
 
     createModal: function() {
         return new Born05.ImageHotspotEditor(
-            this.settings.assetUrl,
+            this.settings.asset,
             {
                 x: parseFloat(this.$xField.val() || 0.5),
                 y: parseFloat(this.$yField.val() || 0.5),

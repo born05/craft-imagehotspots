@@ -19,7 +19,11 @@
 
 {% set jsSettings = {
     id: id|namespaceInputId,
-    assetUrl: (asset is not null) ? asset.url : null,
+    asset: (asset is not null) ? {
+        url: asset.url,
+        width: asset.width,
+        height: asset.height,
+    } : null,
 } %}
 
 {% js %}

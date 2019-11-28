@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.0-beta.6 - 2019-11-28
+### Fixed
+- Fixed image sizing issues in admin modal.
+
 ## 1.0.0-beta.5 - 2019-11-20
 ### Changed
 - Changed CMS button label to 'Set hotspot position'.

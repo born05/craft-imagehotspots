@@ -40,6 +40,14 @@
     display: block;
 }
 
+.image-hotspot-editor .align-height img {
+    height: 100%;
+}
+
+.image-hotspot-editor .align-width img {
+    width: 100%;
+}
+
 .image-hotspot-editor .point,
 .image-hotspot-editor .current {
     position: absolute;

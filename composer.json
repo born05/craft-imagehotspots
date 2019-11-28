@@ -1,7 +1,7 @@
 {
     "name": "born05/craft-imagehotspots",
     "description": "Image Hotspots fieldtype for Craft CMS",
-    "version": "1.0.0-beta.5",
+    "version": "1.0.0-beta.6",
     "type": "craft-plugin",
     "keywords": [
       "hotspots",

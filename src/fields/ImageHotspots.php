@@ -3,6 +3,7 @@ namespace born05\imagehotspots\fields;
 
 use born05\imagehotspots\Plugin;
 use born05\imagehotspots\models\Hotspot;
+use born05\imagehotspots\gql\HotspotType;
 use born05\imagehotspots\assetbundles\imagehotspotsfield\ImageHotspotsFieldAsset;
 
 use Craft;
@@ -147,6 +148,13 @@ class ImageHotspots extends Field
             'relatedAssetHandle' => $this->relatedAssetHandle,
             'asset' => isset($assetField) ? $assetField->one() : null,
         ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentGqlType() {
+        return HotspotType::getType();
     }
 
     /**

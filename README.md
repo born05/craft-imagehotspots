@@ -34,6 +34,17 @@ composer require born05/craft-imagehotspots
 #### Hotspot picker in use
 ![Hotspot picker in use](https://raw.githubusercontent.com/born05/craft-imagehotspots/master/picker-use.png)
 
+## GraphQl support
+
+Use the field in graphql:
+
+```gql
+hotspot {
+    x
+    y
+}
+```
+
 ## License
 
 Copyright © [Born05](https://www.born05.com/)

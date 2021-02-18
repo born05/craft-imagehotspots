@@ -1,4 +1,3 @@
-  
 {% import "_includes/forms" as forms %}
 
 {% set id = id ?? 'hotspot'~random() -%}
@@ -20,7 +19,7 @@
 {% set jsSettings = {
     id: id|namespaceInputId,
     asset: (asset is not null) ? {
-        url: asset.url,
+        url: craft.app.assets.thumbUrl(asset, asset.width, asset.height, false, false),
         width: asset.width,
         height: asset.height,
     } : null,

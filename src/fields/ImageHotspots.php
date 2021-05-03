@@ -170,6 +170,15 @@ class ImageHotspots extends Field
             return $element;
         }
 
+        // Neo block elements can be nested under a parent without them being the owner.
+        if (class_exists('\benf\neo\elements\Block') && $element instanceof \benf\neo\elements\Block) {
+            $parent = $element->getParent();
+
+            if (isset($parent)) {
+                return $this->determineFieldOwner($fieldHandle, $parent);
+            }
+        }
+
         return $this->hasOwner($element) ? $this->determineFieldOwner($fieldHandle, $element->getOwner()) : null;
     }
 

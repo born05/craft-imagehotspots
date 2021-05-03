@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.1.0 - 2021-05-03
+### Added
+- Nested Neo block elements are now supported.
+
 ## 1.0.1 - 2021-03-02
 ### Changed
 - Allow to preview images that don't have a public URL (for instance, images on an AWS S3 private Bucket). Thanks to @billmn

@@ -3,7 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
-
+## 1.2.0 - 2021-07-05
+### Added
+- Added support for using the field directly on an asset element.
+### Changed
+- Limit image size to 2048 pixels.
 ## 1.1.0 - 2021-05-03
 ### Added
 - Nested Neo block elements are now supported.

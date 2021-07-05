@@ -1,12 +1,12 @@
 # Image Hotspots
 
-Image Hotspots fieldtype for adding multiple hotspots to images from a matrix or super-table in Craft CMS.
+Image Hotspots fieldtype for adding multiple hotspots to images from an asset element, matrix field, neo field or super-table field in Craft CMS.
 
 ## Setup & usage
 
 1. Create an asset field for use with images.
 2. Create a "Image Hotspot" field, pointing to the asset field's handle. _When used inside a super-table or matrix, multiple hotspots can be placed on one image._
-3. Make sure the hotspot field is on the same or a higher level inside an entry. _The hotspot field goes down the entry's element tree untill it finds the asset field matching the handle._
+3. Make sure the hotspot field is on the same or a higher level inside an entry. No asset field is needed when using the hotspot field directly on an asset element. _The hotspot field goes down the entry's element tree untill it finds the asset field matching the handle._
 4. Fill the asset field on the entry and save.
 5. Pick the hotspots on the asset using the "Hotspot" button.
 

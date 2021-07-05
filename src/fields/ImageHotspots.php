@@ -9,6 +9,7 @@ use born05\imagehotspots\assetbundles\imagehotspotsfield\ImageHotspotsFieldAsset
 use Craft;
 use craft\base\ElementInterface;
 use craft\base\Field;
+use craft\elements\Asset;
 use craft\helpers\Json;
 use yii\db\Schema;
 
@@ -125,19 +126,15 @@ class ImageHotspots extends Field
         // Register our asset bundle
         Craft::$app->getView()->registerAssetBundle(ImageHotspotsFieldAsset::class);
 
-        if (strlen($this->relatedAssetHandle)) {
-            if ($element instanceof \verbb\supertable\elements\SuperTableBlockElement) {
-                $rootElement = $element->getOwner();
-            } else {
-                $rootElement = $element;
-            }
+        $rootElement = $this->determineFieldOwner($this->relatedAssetHandle, $element);
 
-            $rootElement = $this->determineFieldOwner($this->relatedAssetHandle, $element);
-
-            if (isset($rootElement)) {
-                $relatedAssetHandle = $this->relatedAssetHandle;
-                $assetField = $rootElement->$relatedAssetHandle;
-            }
+        $asset = null;
+        if ($rootElement instanceof Asset) {
+            $asset = $rootElement;
+        } elseif (isset($rootElement)) {
+            $relatedAssetHandle = $this->relatedAssetHandle;
+            $assetField = $rootElement->$relatedAssetHandle;
+            $asset = isset($assetField) ? $assetField->one() : null;
         }
 
         /** @var Hotspot|null $value */
@@ -146,7 +143,7 @@ class ImageHotspots extends Field
             'name' => $this->handle,
             'value' => $value,
             'relatedAssetHandle' => $this->relatedAssetHandle,
-            'asset' => isset($assetField) ? $assetField->one() : null,
+            'asset' => $asset,
         ]);
     }
 
@@ -166,7 +163,7 @@ class ImageHotspots extends Field
      */
     private function determineFieldOwner(string $fieldHandle, ElementInterface $element = null)
     {
-        if (isset($element->$fieldHandle)) {
+        if ($element instanceof Asset || (strlen($fieldHandle) && isset($element->$fieldHandle))) {
             return $element;
         }
 

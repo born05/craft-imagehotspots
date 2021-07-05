@@ -16,10 +16,22 @@
     {% endif %}
 </div>
 
+{% set width = 0 %}
+{% set height = 0 %}
+
+{% if asset is not null %}
+    {% set maxSize = min(2048, asset.width, asset.height) %}
+    {% set ratioW = asset.width / asset.height %}
+    {% set ratioH = asset.height / asset.width %}
+
+    {% set width = (ratioW > ratioH) ? maxSize : maxSize * ratioW %}
+    {% set height = (ratioH > ratioW) ? maxSize : maxSize * ratioH %}
+{% endif %}
+
 {% set jsSettings = {
     id: id|namespaceInputId,
     asset: (asset is not null) ? {
-        url: craft.app.assets.thumbUrl(asset, asset.width, asset.height, false, false),
+        url: craft.app.assets.thumbUrl(asset, width, height, false, false),
         width: asset.width,
         height: asset.height,
     } : null,

@@ -2,17 +2,16 @@
 
 namespace born05\imagehotspots\assetbundles\imagehotspotsfield;
 
-use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
+/**
+ * @inheritdoc
+ */
 class ImageHotspotsFieldAsset extends AssetBundle
 {
-    // Public Methods
-    // =========================================================================
-
     /**
-     * Initializes the bundle.
+     * @inheritdoc
      */
     public function init()
     {

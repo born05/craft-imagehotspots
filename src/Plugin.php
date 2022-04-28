@@ -15,10 +15,13 @@ use yii\base\Event;
 
 class Plugin extends \craft\base\Plugin
 {
-    public static $plugin;
+    public static Plugin $plugin;
 
-    public $schemaVersion = '1.0.0';
+    public string $schemaVersion = '1.0.0';
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();

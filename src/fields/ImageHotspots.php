@@ -1,7 +1,6 @@
 <?php
 namespace born05\imagehotspots\fields;
 
-use born05\imagehotspots\Plugin;
 use born05\imagehotspots\models\Hotspot;
 use born05\imagehotspots\gql\HotspotType;
 use born05\imagehotspots\assetbundles\imagehotspotsfield\ImageHotspotsFieldAsset;
@@ -12,6 +11,7 @@ use craft\base\Field;
 use craft\elements\Asset;
 use craft\helpers\Json;
 use yii\db\Schema;
+use GraphQL\Type\Definition\Type;
 
 class ImageHotspots extends Field
 {
@@ -40,7 +40,7 @@ class ImageHotspots extends Field
     /**
      * @var string|null The handle of the related asset field
      */
-    public $relatedAssetHandle;
+    public string $relatedAssetHandle;
 
     // Public Methods
     // =========================================================================
@@ -56,7 +56,7 @@ class ImageHotspots extends Field
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): string
     {
         return Craft::$app->getView()->renderTemplate('imagehotspots/_components/field/settings', [
             'label' => Craft::t('imagehotspots', 'Related asset field handle'),
@@ -70,7 +70,7 @@ class ImageHotspots extends Field
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = parent::rules();
         $rules[] = [['relatedAssetHandle'], 'string', 'max' => 100];
@@ -80,7 +80,7 @@ class ImageHotspots extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ElementInterface $element = null)
+    public function normalizeValue($value, ElementInterface $element = null): Hotspot
     {
         if ($value instanceof Hotspot) {
             return $value;
@@ -104,7 +104,7 @@ class ImageHotspots extends Field
     /**
      * @inheritdoc
      */
-    public function serializeValue($value, ElementInterface $element = null)
+    public function serializeValue($value, ElementInterface $element = null): mixed
     {
         $serialized = [];
 
@@ -150,7 +150,7 @@ class ImageHotspots extends Field
     /**
      * @inheritdoc
      */
-    public function getContentGqlType() {
+    public function getContentGqlType(): Type {
         return HotspotType::getType();
     }
 

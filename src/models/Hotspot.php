@@ -17,9 +17,9 @@ class Hotspot extends Model
     public $y = 0.5;
 
     /**
-     * @return array
+     * @inheritdoc
      */
-    public function rules()
+    public function defineRules(): array
     {
         return [
             [['x', 'y'], 'required'],

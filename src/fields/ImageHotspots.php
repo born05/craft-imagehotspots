@@ -40,7 +40,7 @@ class ImageHotspots extends Field
     /**
      * @var string|null The handle of the related asset field
      */
-    public string $relatedAssetHandle;
+    public ?string $relatedAssetHandle = null;
 
     // Public Methods
     // =========================================================================
@@ -63,16 +63,16 @@ class ImageHotspots extends Field
             'id' => 'relatedAssetHandle',
             'name' => 'relatedAssetHandle',
             'value' => $this->relatedAssetHandle,
-            'errors' => $this->getErrors('relatedAssetHandle'),
+            'errors' => is_null($this->relatedAssetHandle) ? [] : $this->getErrors('relatedAssetHandle'),
         ]);
     }
 
     /**
      * @inheritdoc
      */
-    public function rules(): array
+    public function defineRules(): array
     {
-        $rules = parent::rules();
+        $rules = parent::defineRules();
         $rules[] = [['relatedAssetHandle'], 'string', 'max' => 100];
         return $rules;
     }
@@ -80,7 +80,7 @@ class ImageHotspots extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ElementInterface $element = null): Hotspot
+    public function normalizeValue(mixed $value, ?ElementInterface $element = null): Hotspot
     {
         if ($value instanceof Hotspot) {
             return $value;
@@ -104,7 +104,7 @@ class ImageHotspots extends Field
     /**
      * @inheritdoc
      */
-    public function serializeValue($value, ElementInterface $element = null): mixed
+    public function serializeValue(mixed $value, ?ElementInterface $element = null): mixed
     {
         $serialized = [];
 
@@ -121,7 +121,7 @@ class ImageHotspots extends Field
     /**
      * @inheritdoc
      */
-    public function getInputHtml($value, ElementInterface $element = null): string
+    public function getInputHtml(mixed $value, ?ElementInterface $element = null): string
     {
         // Register our asset bundle
         Craft::$app->getView()->registerAssetBundle(ImageHotspotsFieldAsset::class);
@@ -185,7 +185,7 @@ class ImageHotspots extends Field
      * @param ElementInterface $element
      * @return bool
      */
-    private function hasOwner($element)
+    private function hasOwner(ElementInterface $element): bool
     {
         return (
             (

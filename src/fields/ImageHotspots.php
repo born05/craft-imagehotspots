@@ -7,6 +7,7 @@ use born05\imagehotspots\assetbundles\imagehotspotsfield\ImageHotspotsFieldAsset
 
 use Craft;
 use craft\base\ElementInterface;
+use craft\base\NestedElementInterface;
 use craft\base\Field;
 use craft\elements\Asset;
 use craft\helpers\Json;
@@ -161,7 +162,7 @@ class ImageHotspots extends Field
      * @param ElementInterface $element
      * @return ElementInterface
      */
-    private function determineFieldOwner(string $fieldHandle, ElementInterface $element = null)
+    private function determineFieldOwner(string $fieldHandle, ElementInterface|NestedElementInterface $element = null)
     {
         if ($element instanceof Asset || (strlen($fieldHandle) && isset($element->$fieldHandle))) {
             return $element;
@@ -176,23 +177,16 @@ class ImageHotspots extends Field
             }
         }
 
-        return $this->hasOwner($element) ? $this->determineFieldOwner($fieldHandle, $element->getOwner()) : null;
-    }
+        // SuperTable block elements can be nested under a parent without them being the owner.
+        if (class_exists('\verbb\supertable\elements\SuperTableBlockElement') && $element instanceof \verbb\supertable\elements\SuperTableBlockElement) {
+            return $this->determineFieldOwner($fieldHandle, $element->getParent());
+        }
 
-    /**
-     * Determine if the element is the child of another element.
-     * 
-     * @param ElementInterface $element
-     * @return bool
-     */
-    private function hasOwner(ElementInterface $element): bool
-    {
-        return (
-            (
-                class_exists('\verbb\supertable\elements\SuperTableBlockElement')
-                && $element instanceof \verbb\supertable\elements\SuperTableBlockElement
-            )
-            || $element instanceof \craft\elements\MatrixBlock
-        );
+        // Modern matrix elements just have a parent.
+        if ($element instanceof NestedElementInterface && $owner = $element->getOwner()) {
+            return $this->determineFieldOwner($fieldHandle, $owner);
+        }
+
+        return null;
     }
 }

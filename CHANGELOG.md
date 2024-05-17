@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0.0-beta.2 - 2024-05-17
+- #17 image editor refactored to support zoom and panning (using scroll and drag)
+- points can now be dragged around
+
 ## 3.0.0-beta.1 - 2024-03-22
 Hotspots are not yet prefilled with data from nested entries as used in the new Matrix fields.
 

@@ -45,6 +45,7 @@
 
 .image-hotspot-editor img {
     display: block;
+    width: 100%;
 }
 
 .image-hotspot-editor .point,

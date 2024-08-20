@@ -12,7 +12,7 @@ Image Hotspots fieldtype for adding multiple hotspots to images from an asset el
 
 ## Requirements
 
-- Craft 3.3.*
+- Craft 5
 
 ## Installation
 

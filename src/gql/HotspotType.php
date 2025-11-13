@@ -1,5 +1,6 @@
 <?php
-namespace born05\imagehotspots\gql;
+
+namespace roelvanhintum\imagehotspots\gql;
 
 use craft\gql\GqlEntityRegistry;
 use craft\gql\base\GqlTypeTrait;

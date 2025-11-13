@@ -1,6 +1,6 @@
 <?php
 
-namespace born05\imagehotspots\assetbundles\imagehotspotsfield;
+namespace roelvanhintum\imagehotspots\assetbundles\imagehotspotsfield;
 
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
@@ -16,7 +16,7 @@ class ImageHotspotsFieldAsset extends AssetBundle
     public function init()
     {
         // define the path that your publishable resources live
-        $this->sourcePath = "@born05/imagehotspots/assetbundles/imagehotspotsfield/dist";
+        $this->sourcePath = "@roelvanhintum/imagehotspots/assetbundles/imagehotspotsfield/dist";
 
         // define the dependencies
         $this->depends = [

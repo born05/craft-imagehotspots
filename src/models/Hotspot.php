@@ -1,5 +1,6 @@
 <?php
-namespace born05\imagehotspots\models;
+
+namespace roelvanhintum\imagehotspots\models;
 
 use Craft;
 use craft\base\Model;

@@ -1,47 +1,51 @@
 {
-    "name": "born05/craft-imagehotspots",
-    "description": "Image Hotspots fieldtype for Craft CMS",
-    "type": "craft-plugin",
-    "keywords": [
-      "hotspots",
-      "assets",
-      "craftcms",
-      "fieldtype"
-    ],
-    "license": "proprietary",
-    "authors": [
-      {
-        "name": "Roel van Hintum",
-        "email": "roel@born05.com"
-      }
-    ],
-    "require": {
-      "php": "^8.2.0",
-      "craftcms/cms": "^5.0.0-beta.1"
+  "name": "roelvanhintum/craft-imagehotspots",
+  "description": "Image Hotspots fieldtype for Craft CMS",
+  "type": "craft-plugin",
+  "keywords": [
+    "hotspots",
+    "assets",
+    "craftcms",
+    "fieldtype"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Roel van Hintum",
+      "homepage": "https://roel.vanhintum.eu/"
     },
-    "autoload": {
-      "psr-4": {
-        "born05\\imagehotspots\\": "src/"
-      }
-    },
-    "support": {
-      "email": "development@born05.com",
-      "issues": "https://github.com/born05/craft-imagehotspots/issues",
-      "source": "https://github.com/born05/craft-imagehotspots",
-      "docs": "https://github.com/born05/craft-imagehotspots/blob/master/README.md",
-      "rss": "https://github.com/born05/craft-imagehotspots/releases.atom"
-    },
-    "extra": {
-      "name": "Image Hotspots",
-      "handle": "imagehotspots"
-    },
-    "config": {
-        "allow-plugins": {
-            "yiisoft/yii2-composer": true,
-            "craftcms/plugin-installer": true
-        }
-    },
-    "require-dev": {
-        "craftcms/phpstan": "dev-main"
+    {
+      "name": "Born05",
+      "homepage": "https://www.born05.com/"
     }
+  ],
+  "require": {
+    "php": "^8.2.0",
+    "craftcms/cms": "^5.0.0-beta.1"
+  },
+  "require-dev": {
+    "craftcms/phpstan": "dev-main",
+    "squizlabs/php_codesniffer": "3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "roelvanhintum\\imagehotspots\\": "src/"
+    }
+  },
+  "support": {
+    "issues": "https://github.com/roelvanhintum/craft-imagehotspots/issues",
+    "source": "https://github.com/roelvanhintum/craft-imagehotspots",
+    "docs": "https://github.com/roelvanhintum/craft-imagehotspots/blob/master/README.md",
+    "rss": "https://github.com/roelvanhintum/craft-imagehotspots/releases.atom"
+  },
+  "extra": {
+    "name": "Image Hotspots",
+    "handle": "imagehotspots"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
 }

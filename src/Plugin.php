@@ -1,9 +1,9 @@
 <?php
 
-namespace born05\imagehotspots;
+namespace roelvanhintum\imagehotspots;
 
-use born05\imagehotspots\fields\ImageHotspots as ImageHotspotsField;
-use born05\imagehotspots\gql\HotspotType;
+use roelvanhintum\imagehotspots\fields\ImageHotspots as ImageHotspotsField;
+use roelvanhintum\imagehotspots\gql\HotspotType;
 
 use Craft;
 use craft\services\Fields;
@@ -36,8 +36,8 @@ class Plugin extends \craft\base\Plugin
         );
 
         Event::on(
-            Gql::class, 
-            Gql::EVENT_REGISTER_GQL_TYPES, 
+            Gql::class,
+            Gql::EVENT_REGISTER_GQL_TYPES,
             function (RegisterGqlTypesEvent $event) {
                 $event->types[] = HotspotType::class;
             }

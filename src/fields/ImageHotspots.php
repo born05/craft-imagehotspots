@@ -1,9 +1,10 @@
 <?php
-namespace born05\imagehotspots\fields;
 
-use born05\imagehotspots\models\Hotspot;
-use born05\imagehotspots\gql\HotspotType;
-use born05\imagehotspots\assetbundles\imagehotspotsfield\ImageHotspotsFieldAsset;
+namespace roelvanhintum\imagehotspots\fields;
+
+use roelvanhintum\imagehotspots\models\Hotspot;
+use roelvanhintum\imagehotspots\gql\HotspotType;
+use roelvanhintum\imagehotspots\assetbundles\imagehotspotsfield\ImageHotspotsFieldAsset;
 
 use Craft;
 use craft\base\ElementInterface;
@@ -151,7 +152,8 @@ class ImageHotspots extends Field
     /**
      * @inheritdoc
      */
-    public function getContentGqlType(): Type {
+    public function getContentGqlType(): Type
+    {
         return HotspotType::getType();
     }
 

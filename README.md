@@ -19,20 +19,23 @@ Image Hotspots fieldtype for adding multiple hotspots to images from an asset el
 Install from the Plugin Store or composer:
 
 ```bash
-composer require born05/craft-imagehotspots
+composer require roelvanhintum/craft-imagehotspots
 ./craft install/plugin imagehotspots
 ```
 
 ## Screens
 
 #### Field settings screen
-![Field settings screen](https://raw.githubusercontent.com/born05/craft-imagehotspots/master/field-settings.png)
+
+![Field settings screen](https://raw.githubusercontent.com/roelvanhintum/craft-imagehotspots/master/field-settings.png)
 
 #### Field in use inside a super-table
-![Field in use inside a super-table](https://raw.githubusercontent.com/born05/craft-imagehotspots/master/field-use.png)
+
+![Field in use inside a super-table](https://raw.githubusercontent.com/roelvanhintum/craft-imagehotspots/master/field-use.png)
 
 #### Hotspot picker in use
-![Hotspot picker in use](https://raw.githubusercontent.com/born05/craft-imagehotspots/master/picker-use.png)
+
+![Hotspot picker in use](https://raw.githubusercontent.com/roelvanhintum/craft-imagehotspots/master/picker-use.png)
 
 ## GraphQl support
 
@@ -44,9 +47,3 @@ hotspot {
     y
 }
 ```
-
-## License
-
-Copyright © [Born05](https://www.born05.com/)
-
-See [license](https://github.com/born05/craft-imagehotspots/blob/master/LICENSE.md)

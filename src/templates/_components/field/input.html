@@ -30,6 +30,8 @@
 
 {% set jsSettings = {
     id: id|namespaceInputId,
+    index: index,
+    label: label,
     asset: (asset is not null) ? {
         url: craft.app.assets.thumbUrl(asset, width, height, false, false),
         width: asset.width,

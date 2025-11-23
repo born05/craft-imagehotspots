@@ -2,7 +2,6 @@
 
 namespace roelvanhintum\imagehotspots\models;
 
-use Craft;
 use craft\base\Model;
 
 class Hotspot extends Model

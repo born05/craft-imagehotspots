@@ -3,76 +3,121 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.0 - 2025-11-23
+
+### Breaking
+
+-   Publish with new namespace and license (MIT)
+-   Dropped supertable support (Shouldn't be used with Craft 5 anyway)
+
+### Added
+
+-   Added index and title/label to hotspot editor if available
+
 ## 3.0.1 - 2024-08-20
-- Fix incorrect hotspot positions for images smaller than the editor canvas
+
+-   Fix incorrect hotspot positions for images smaller than the editor canvas
 
 ## 3.0.0 - 2024-08-20
-- Stable release for Craft 5
+
+-   Stable release for Craft 5
 
 ## 3.0.0-beta.3 - 2024-05-17
-- #13 inverted colors to show current clearer
+
+-   #13 inverted colors to show current clearer
 
 ## 3.0.0-beta.2 - 2024-05-17
-- #17 image editor refactored to support zoom and panning (using scroll and drag)
-- points can now be dragged around
+
+-   #17 image editor refactored to support zoom and panning (using scroll and drag)
+-   points can now be dragged around
 
 ## 3.0.0-beta.1 - 2024-03-22
+
 Hotspots are not yet prefilled with data from nested entries as used in the new Matrix fields.
 
 ### Changed
-- Added craft 5 support
+
+-   Added craft 5 support
 
 ## 2.0.0 - 2023-10-13
+
 ### Changed
-- No changes. Bumped version.
+
+-   No changes. Bumped version.
 
 ## 2.0.0-beta.1 - 2022-05-09
+
 ### Changed
-- Added craft 4 support
+
+-   Added craft 4 support
 
 ## 1.2.0 - 2021-07-05
+
 ### Added
-- Added support for using the field directly on an asset element.
+
+-   Added support for using the field directly on an asset element.
+
 ### Changed
-- Limit image size to 2048 pixels.
+
+-   Limit image size to 2048 pixels.
 
 ## 1.1.0 - 2021-05-03
+
 ### Added
-- Nested Neo block elements are now supported.
+
+-   Nested Neo block elements are now supported.
 
 ## 1.0.1 - 2021-03-02
+
 ### Changed
-- Allow to preview images that don't have a public URL (for instance, images on an AWS S3 private Bucket). Thanks to @billmn
+
+-   Allow to preview images that don't have a public URL (for instance, images on an AWS S3 private Bucket). Thanks to @billmn
 
 ## 1.0.0.1 - 2020-11-03
+
 ### Fixed
-- Fixed composer.json for composer 2
+
+-   Fixed composer.json for composer 2
 
 ## 1.0.0 - 2020-05-15
+
 ### Added
-- GraphQl support thanks to @rocknrolaf
+
+-   GraphQl support thanks to @rocknrolaf
 
 ## 1.0.0-beta.6 - 2019-11-28
+
 ### Fixed
-- Fixed image sizing issues in admin modal.
+
+-   Fixed image sizing issues in admin modal.
 
 ## 1.0.0-beta.5 - 2019-11-20
+
 ### Changed
-- Changed CMS button label to 'Set hotspot position'.
+
+-   Changed CMS button label to 'Set hotspot position'.
 
 ## 1.0.0-beta.4 - 2019-10-31
+
 ### Changed
-- Improved hotspot editor.
+
+-   Improved hotspot editor.
 
 ## 1.0.0-beta.3 - 2019-10-30
+
 ### Added
-- Added documentation
-- Fixed license link
+
+-   Added documentation
+-   Fixed license link
 
 ## 1.0.0-beta.2 - 2019-10-30
+
 ### Removed
-- Removed incorrect toArray method
+
+-   Removed incorrect toArray method
 
 ## 1.0.0-beta.1 - 2019-10-08
+
 ### Added
-- Initial release
+
+-   Initial release

@@ -2,7 +2,6 @@
 
 namespace roelvanhintum\imagehotspots\gql;
 
-use craft\gql\GqlEntityRegistry;
 use craft\gql\base\GqlTypeTrait;
 use GraphQL\Type\Definition\Type;
 
@@ -18,14 +17,14 @@ class HotspotType
     public static function getFieldDefinitions(): array
     {
         return [
-            'x'     => [
-                'name'        => 'x',
-                'type'        => Type::float(),
+            'x' => [
+                'name' => 'x',
+                'type' => Type::float(),
                 'description' => 'The x coordinate.',
             ],
-            'y'     => [
-                'name'        => 'y',
-                'type'        => Type::float(),
+            'y' => [
+                'name' => 'y',
+                'type' => Type::float(),
                 'description' => 'The y coordinate.',
             ],
         ];

@@ -2,18 +2,18 @@
 
 namespace roelvanhintum\imagehotspots\fields;
 
-use roelvanhintum\imagehotspots\models\Hotspot;
-use roelvanhintum\imagehotspots\gql\HotspotType;
-use roelvanhintum\imagehotspots\assetbundles\imagehotspotsfield\ImageHotspotsFieldAsset;
-
 use Craft;
 use craft\base\ElementInterface;
-use craft\base\NestedElementInterface;
 use craft\base\Field;
+
+use craft\base\NestedElementInterface;
 use craft\elements\Asset;
 use craft\helpers\Json;
-use yii\db\Schema;
 use GraphQL\Type\Definition\Type;
+use roelvanhintum\imagehotspots\assetbundles\imagehotspotsfield\ImageHotspotsFieldAsset;
+use roelvanhintum\imagehotspots\gql\HotspotType;
+use roelvanhintum\imagehotspots\models\Hotspot;
+use yii\db\Schema;
 
 class ImageHotspots extends Field
 {
@@ -146,6 +146,8 @@ class ImageHotspots extends Field
             'value' => $value,
             'relatedAssetHandle' => $this->relatedAssetHandle,
             'asset' => $asset,
+            'index' => $this->determineElementIndex($element, $rootElement),
+            'label' => $this->determineElementLabel($element),
         ]);
     }
 
@@ -158,13 +160,35 @@ class ImageHotspots extends Field
     }
 
     /**
-     * Determine the owner of a field, by looping through the parents.
-     * 
-     * @param string $fieldHandle
-     * @param ElementInterface $element
-     * @return ElementInterface
+     * Determine the label of the element.
      */
-    private function determineFieldOwner(string $fieldHandle, ElementInterface|NestedElementInterface $element = null)
+    private function determineElementLabel(ElementInterface|null $element = null): string|null
+    {
+        // Modern matrix elements just have a parent.
+        if ($element instanceof ElementInterface) {
+            return $element?->title ?? $element?->label ?? null;
+        }
+
+        return null;
+    }
+
+    /**
+     * Determine the index of the element.
+     */
+    private function determineElementIndex(ElementInterface|NestedElementInterface|null $element = null, ElementInterface|null $rootElement = null): int|null
+    {
+        // Modern matrix elements just have a parent.
+        if ($element instanceof NestedElementInterface && $element !== $rootElement) {
+            return $element->getSortOrder();
+        }
+
+        return null;
+    }
+
+    /**
+     * Determine the owner of a field, by looping through the parents.
+     */
+    private function determineFieldOwner(string $fieldHandle, ElementInterface|NestedElementInterface|null $element = null): ?ElementInterface
     {
         if ($element instanceof Asset || (strlen($fieldHandle) && isset($element->$fieldHandle))) {
             return $element;
@@ -177,11 +201,6 @@ class ImageHotspots extends Field
             if (isset($parent)) {
                 return $this->determineFieldOwner($fieldHandle, $parent);
             }
-        }
-
-        // SuperTable block elements can be nested under a parent without them being the owner.
-        if (class_exists('\verbb\supertable\elements\SuperTableBlockElement') && $element instanceof \verbb\supertable\elements\SuperTableBlockElement) {
-            return $this->determineFieldOwner($fieldHandle, $element->getParent());
         }
 
         // Modern matrix elements just have a parent.
